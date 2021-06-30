@@ -1,2 +1,2 @@
 # NanoGraph
-Expanding graphing utility for use with NanoR
+expanded graphing utility for use with NanoR
