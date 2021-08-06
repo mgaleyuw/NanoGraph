@@ -18,3 +18,7 @@ Imports:
     scales,
     utils
 License: CC BY 4.0
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

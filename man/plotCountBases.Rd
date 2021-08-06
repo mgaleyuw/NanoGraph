@@ -6,7 +6,7 @@
 \usage{
 plotCountBases(
   df,
-  binNum,
+  bin.num,
   plotQual = TRUE,
   qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
   binWidth = 8000,
@@ -16,8 +16,6 @@ plotCountBases(
 \arguments{
 \item{df}{DataFrame of read metadata}
 
-\item{binNum}{Number of Bins}
-
 \item{plotQual}{TRUE or FALSE, default FALSE, plot quality distribution as fill}
 
 \item{qual.bins}{a vector of quality cutoffs for use with plotQual}
@@ -25,6 +23,8 @@ plotCountBases(
 \item{binWidth}{the width of each bar in b}
 
 \item{barColor}{the name or hex string of a color if not plotting quality}
+
+\item{binNum}{Number of Bins}
 }
 \value{
 a ggplot2 plot

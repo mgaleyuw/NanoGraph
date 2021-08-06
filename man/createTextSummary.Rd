@@ -4,7 +4,7 @@
 \alias{createTextSummary}
 \title{Calculate read length distribution and coverage then save to .csv}
 \usage{
-createTextSummary(indf, outputname, append = FALSE)
+createTextSummary(indf, outputname = NA, append = FALSE)
 }
 \arguments{
 \item{indf}{DataFrame of read metadata}
@@ -14,8 +14,11 @@ working directory}
 
 \item{append}{TRUE or FALSE to append summary statistics to an existing file}
 }
+\value{
+a vector containing results
+}
 \description{
 Uses metadata DataFrame to calculate read distribution statistics and saves
-to file. Not implemented yet: appending results to existing file where row
+to file. Optionally append results to existing file where row
 name = sample name.
 }

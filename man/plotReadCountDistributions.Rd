@@ -14,7 +14,8 @@ plotReadCountDistributions(
   outheight = 7,
   outunits = "in",
   plotQual = FALSE,
-  qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60)
+  qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
+  barColor = "#8ec462"
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ skip plot saving.}
 \item{plotQual}{TRUE or FALSE, default FALSE, plot quality distribution as fill}
 
 \item{qual.bins}{a vector of quality cutoffs for use with plotQual}
+
+\item{barColor}{an r color or color hex code}
 }
 \value{
 a ggplot2 plot

@@ -12,7 +12,7 @@ loadTable(infile, qualityCutoff = 0)
 \item{qualityCutoff}{reads with quality scores >= to this cutoff are kept}
 }
 \value{
-a DataFame of the infile
+a DataFrame of the infile
 }
 \description{
 Reads in metadata.txt produced by NanoR and returns a Data.Frame object
