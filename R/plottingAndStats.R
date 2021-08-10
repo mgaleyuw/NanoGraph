@@ -76,7 +76,7 @@ createTextSummary <- function(indf, outputname=NA, append=FALSE){
 #'@return a ggplot2 plot
 #'@export
 plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, skinnyBin=FALSE, outwidth=8, outheight=7, outunits="in", plotQual=FALSE, qual.bins=c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), barColor="#8ec462") {
-  ggplot2::theme_set(ggplot2::theme_classic(base_size=12, base_family="Avenir"))
+  ggplot2::theme_set(ggplot2::theme_classic(base_size=12))
   if(counts){
     bw=10000
     if(skinnyBin){
@@ -95,6 +95,7 @@ plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, s
   }
   return(g)
 }
+
 
 #'Plot histogram of read counts
 #'
