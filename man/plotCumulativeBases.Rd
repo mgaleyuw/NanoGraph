@@ -11,7 +11,7 @@ plotCumulativeBases(
   qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
   binWidth = 6000,
   barColor = "#8ec462",
-  barColorRamp = c("#8ec462", "indigo"),
+  barColorRamp = c("#8ec462", "firebrick1"),
   colorMapVar = NA,
   dodgeAdjust = 10000
 )

@@ -17,7 +17,7 @@ plotReadCountDistributions(
   qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
   barColor = "#8ec462",
   indf2 = NA,
-  barColorRamp = c("#8ec462", "indigo"),
+  barColorRamp = c("#8ec462", "firebrick1"),
   dodgeAdjust = 10000,
   sampleNames = c("Sample 1", "Sample 2")
 )
