@@ -15,7 +15,11 @@ plotReadCountDistributions(
   outunits = "in",
   plotQual = FALSE,
   qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
-  barColor = "#8ec462"
+  barColor = "#8ec462",
+  indf2 = NA,
+  barColorRamp = c("#8ec462", "indigo"),
+  dodgeAdjust = 10000,
+  sampleNames = c("Sample 1", "Sample 2")
 )
 }
 \arguments{
@@ -41,6 +45,14 @@ skip plot saving.}
 \item{qual.bins}{a vector of quality cutoffs for use with plotQual}
 
 \item{barColor}{an r color or color hex code}
+
+\item{indf2}{DataFrame of read metadata for a second sample}
+
+\item{dodgeAdjust}{a number to adjust the spacing of color mapped bars. Default is 10kb.}
+
+\item{sampleNames}{a vector of samplenames for plotting two datasets}
+
+\item{colorMapVar}{name of a column in df to map fill to}
 }
 \value{
 a ggplot2 plot

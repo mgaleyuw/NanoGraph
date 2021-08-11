@@ -66,18 +66,16 @@ createTextSummary <- function(indf, outputname=NA, append=FALSE){
 #'
 #'Uses metadata DataFrame and returns the N50 or any other cumulative percentile
 #'
-#'@param df DataFrame of read metadata
+#'@param indf DataFrame of read metadata
 #'@param nfactor cumulative percentile, default=0.5
 #'@return a tibble of results
 #'@export
-calcN50 <- function(df,nfactor=0.5){
-  totalLength <- sum(df$Length.of.Read)
+calcN50 <- function(indf, nfactor=0.5){
+  totalLength <- sum(indf$Length.of.Read)
   halfLength <- totalLength*nfactor
-  summdf <- df %>% dplyr::arrange(desc(Length.of.Read)) %>% dplyr::mutate("CumulativeKB" = cumsum(Length.of.Read)) %>% summarise(minL=nth(Length.of.Read, which.min(abs(CumulativeKB-halfLength))))
+  summdf <- indf %>% dplyr::arrange(desc(Length.of.Read)) %>% dplyr::mutate("CumulativeKB" = cumsum(Length.of.Read)) %>% summarise(minL=nth(Length.of.Read, which.min(abs(CumulativeKB-halfLength))))
   return(as.vector(summdf[1]))
 }
-
-calcN50(df)
 
 #'Plot bar chart of read counts or cumulative read KB in bins
 #'

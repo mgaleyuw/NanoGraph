@@ -10,7 +10,10 @@ plotCountBases(
   plotQual = TRUE,
   qual.bins = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
   binWidth = 8000,
-  barColor = "#8ec462"
+  barColor = "#8ec462",
+  barColorRamp = c("#8ec462", "violet"),
+  colorMapVar = NA,
+  dodgeAdjust = 10000
 )
 }
 \arguments{
@@ -23,6 +26,12 @@ plotCountBases(
 \item{binWidth}{the width of each bar in b}
 
 \item{barColor}{the name or hex string of a color if not plotting quality}
+
+\item{barColorRamp}{a vector of rcolors to be used when mapping two datasets}
+
+\item{colorMapVar}{name of a column in df to map fill to}
+
+\item{dodgeAdjust}{a number to adjust the spacing of color mapped bars. Default is 10kb.}
 
 \item{binNum}{Number of Bins}
 }
