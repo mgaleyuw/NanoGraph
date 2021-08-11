@@ -19,7 +19,8 @@ plotReadCountDistributions(
   indf2 = NA,
   barColorRamp = c("#8ec462", "firebrick1"),
   dodgeAdjust = 10000,
-  sampleNames = c("Sample 1", "Sample 2")
+  sampleNames = c("Sample 1", "Sample 2"),
+  binWidth = NA
 )
 }
 \arguments{
@@ -51,6 +52,8 @@ skip plot saving.}
 \item{dodgeAdjust}{a number to adjust the spacing of color mapped bars. Default is 10kb.}
 
 \item{sampleNames}{a vector of samplenames for plotting two datasets}
+
+\item{binWidth}{a number, representing width of bins. overrides skinnybin.}
 
 \item{colorMapVar}{name of a column in df to map fill to}
 }

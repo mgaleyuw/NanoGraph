@@ -98,14 +98,18 @@ calcN50 <- function(indf, nfactor=0.5){
 #'@param colorMapVar name of a column in df to map fill to
 #'@param dodgeAdjust a number to adjust the spacing of color mapped bars. Default is 10kb.
 #'@param sampleNames a vector of samplenames for plotting two datasets
+#'@param binWidth a number, representing width of bins. overrides skinnybin.
 #'@return a ggplot2 plot
 #'@export
-plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, skinnyBin=FALSE, outwidth=8, outheight=7, outunits="in", plotQual=FALSE, qual.bins=c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), barColor="#8ec462", indf2=NA, barColorRamp=c("#8ec462", "firebrick1"), dodgeAdjust=10000, sampleNames=c("Sample 1", "Sample 2")) {
+plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, skinnyBin=FALSE, outwidth=8, outheight=7, outunits="in", plotQual=FALSE, qual.bins=c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), barColor="#8ec462", indf2=NA, barColorRamp=c("#8ec462", "firebrick1"), dodgeAdjust=10000, sampleNames=c("Sample 1", "Sample 2"), binWidth=NA) {
   ggplot2::theme_set(ggplot2::theme_classic(base_size=12))
   if(counts){
     bw=10000
     if(skinnyBin){
       bw=5000
+    }
+    if(!is.na(binWidth)){
+      bw=binWidth
     }
     if(is.na(indf2)){
       g <- plotCountBases(indf, binNum, plotQual=plotQual, qual.bins=qual.bins, binWidth=bw, barColor=barColor)
@@ -119,6 +123,9 @@ plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, s
     bw=5000
     if(skinnyBin){
       bw=2500
+    }
+    if(!is.na(binWidth)){
+      bw=binWidth
     }
     if(is.na(indf2)){
     g <- plotCumulativeBases(indf, binNum, plotQual=plotQual, qual.bins=qual.bins, binWidth=bw, barColor=barColor)
