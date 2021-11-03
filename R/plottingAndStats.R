@@ -73,7 +73,7 @@ createTextSummary <- function(indf, outputname=NA, append=FALSE){
 calcN50 <- function(indf, nfactor=0.5){
   totalLength <- sum(indf$Length.of.Read)
   halfLength <- totalLength*nfactor
-  summdf <- indf %>% dplyr::arrange(desc(Length.of.Read)) %>% dplyr::mutate("CumulativeKB" = cumsum(Length.of.Read)) %>% summarise(minL=nth(Length.of.Read, which.min(abs(CumulativeKB-halfLength))))
+  summdf <- indf %>% dplyr::arrange(desc(Length.of.Read)) %>% dplyr::mutate("CumulativeKB" = cumsum(as.numeric(Length.of.Read))) %>% summarise(minL=nth(Length.of.Read, which.min(abs(CumulativeKB-halfLength))))
   return(as.vector(summdf[1]))
 }
 
@@ -101,7 +101,7 @@ calcN50 <- function(indf, nfactor=0.5){
 #'@param binWidth a number, representing width of bins. overrides skinnybin.
 #'@return a ggplot2 plot
 #'@export
-plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, skinnyBin=FALSE, outwidth=8, outheight=7, outunits="in", plotQual=FALSE, qual.bins=c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), barColor="#8ec462", indf2=NA, barColorRamp=c("#8ec462", "firebrick1"), dodgeAdjust=10000, sampleNames=c("Sample 1", "Sample 2"), binWidth=NA) {
+plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, skinnyBin=FALSE, outwidth=8, outheight=7, outunits="in", plotQual=FALSE, qual.bins=c(7,10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), barColor="#8ec462", indf2=NA, barColorRamp=c("#8ec462", "firebrick1"), dodgeAdjust=10000, sampleNames=c("Sample 1", "Sample 2"), binWidth=NA) {
   ggplot2::theme_set(ggplot2::theme_classic(base_size=12))
   if(counts){
     bw=10000
@@ -160,7 +160,7 @@ plotReadCountDistributions <- function(indf, outname, binNum=50, counts=FALSE, s
 #'@param dodgeAdjust a number to adjust the spacing of color mapped bars. Default is 10kb.
 #'@return a ggplot2 plot
 #'@export
-plotCountBases <- function(df, bin.num, plotQual=TRUE, qual.bins=c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), binWidth=8000, barColor="#8ec462", barColorRamp=c("#8ec462", "violet"), colorMapVar=NA, dodgeAdjust=10000){
+plotCountBases <- function(df, bin.num, plotQual=TRUE, qual.bins=c(7,10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), binWidth=8000, barColor="#8ec462", barColorRamp=c("#8ec462", "violet"), colorMapVar=NA, dodgeAdjust=10000){
   bins <- seq(from=min(df$Length.of.Read), to=max(df$Length.of.Read), length.out=bin.num)
   df$bincode <- .bincode(df$Length.of.Read, bins, right=FALSE)
   if(plotQual==FALSE){
@@ -216,7 +216,7 @@ plotCountBases <- function(df, bin.num, plotQual=TRUE, qual.bins=c(10, 15, 20, 2
 #'@param dodgeAdjust a number to adjust the spacing of color mapped bars. Default is 10kb.
 #'@return a ggplot2 plot
 #'@export
-plotCumulativeBases <- function(df, bin.num, plotQual=TRUE, qual.bins=c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), binWidth=6000, barColor="#8ec462", barColorRamp=c("#8ec462", "firebrick1"), colorMapVar=NA, dodgeAdjust=10000){
+plotCumulativeBases <- function(df, bin.num, plotQual=TRUE, qual.bins=c(7,10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60), binWidth=6000, barColor="#8ec462", barColorRamp=c("#8ec462", "firebrick1"), colorMapVar=NA, dodgeAdjust=10000){
   bins <- seq(from=min(df$Length.of.Read), to=max(df$Length.of.Read), length.out=bin.num)
   df$bincode <- .bincode(df$Length.of.Read, bins, right=FALSE)
   
